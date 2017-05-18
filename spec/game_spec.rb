@@ -3,8 +3,13 @@ require 'game'
 describe Game do
   let(:field) { double(:field, empty?: nil, claim: 'X')}
   let(:field_class) { double(:field_class, new: field)}
+  let(:grid) { double(:grid) }
   # let(:player1) { double(:player1, :play}
-  subject(:game) { described_class.new(field_class) }
+  subject(:game) { described_class.new(grid) }
+
+  it 'initializes with a grid' do
+    expect(game.grid).to eq grid
+  end
 
   describe '#play' do
     it 'populates a given empty field' do
