@@ -28,4 +28,7 @@ class Game
   def complete_row?
     fields.each.inject(:concat).map { |field| field.value }.each_slice(3).any? { |slice| slice.join == 'XXX' }
   end
+
+  def complete_column?
+
 end
