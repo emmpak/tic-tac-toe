@@ -7,7 +7,8 @@ class Game
   end
 
   def play(row, column, player)
-    fields[row][column].claim(player)
+    field = fields[row][column]
+    field.claim(player) if field.empty?
   end
 
   private
