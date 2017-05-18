@@ -1,8 +1,8 @@
 require 'game'
 
 describe Game do
-  let(:field) { double(:field, empty?: nil, claim: 'X')}
-  let(:field_class) { double(:field_class, new: field)}
+  # let(:field) { double(:field, empty?: nil, claim: 'X')}
+  # let(:field_class) { double(:field_class, new: field)}
   let(:grid) { double(:grid) }
   # let(:player1) { double(:player1, :play}
   subject(:game) { described_class.new(grid) }
@@ -13,8 +13,9 @@ describe Game do
 
   describe '#play' do
     it 'populates a given empty field' do
-      allow(field).to receive(:empty?).and_return(true)
-      expect(field).to receive(:claim).with('X')
+      expect(grid).to receive(:claim).with(0,0,'X')
+      # allow(field).to receive(:empty?).and_return(true)
+      # expect(field).to receive(:claim).with('X')
       game.play(0,0,'X')
     end
 
