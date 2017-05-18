@@ -3,8 +3,6 @@ class Game
 
   def initialize(grid)
     @grid = grid
-    # @fields = []
-    # create_fields(field_class)
   end
 
   def play(row, column, player)
@@ -18,18 +16,7 @@ class Game
 
   private
 
-  # def create_fields(field_class)
-  #   3.times do
-  #     row = []
-  #     3.times { row << field_class.new }
-  #     fields << row
-  #   end
-  # end
-
   def complete_row?
     fields.each.inject(:concat).map { |field| field.value }.each_slice(3).any? { |slice| slice.join == 'XXX' }
   end
-
-  # def complete_column?
-
 end
