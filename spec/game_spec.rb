@@ -29,8 +29,17 @@ describe Game do
   end
 
   describe '#finished?' do
-    it 'is not finished unless there is a win or all fields have been claimed' do
-      expect(game.finished?).to eq false
+    # it 'is not finished unless there is a win or all fields have been claimed' do
+    #   expect(game.finished?).to eq false
+    # end
+
+    context 'yes' do
+      before { allow(field).to receive(:value).and_return 'X'}
+
+      it 'if top row has been claimed by the same player' do
+        (0...2).each { |column| game.play(0,column, 'X') }
+        expect(game.finished?).to eq true
+      end
     end
   end
 
