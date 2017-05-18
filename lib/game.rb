@@ -4,13 +4,10 @@ class Game
     create_fields(field_class)
   end
 
-  pritvate
+  private
   attr_reader :fields
 
   def create_fields(field_class)
     12.times { fields << field_class.new }
-  end
-
-
   end
 end
