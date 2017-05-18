@@ -8,7 +8,7 @@ describe Field do
   end
 
   it 'is claimed if a player picks it' do
-    field.claim(mark)
+    field.claim('X')
     expect(field).to be_claimed
   end
 
