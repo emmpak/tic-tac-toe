@@ -3,6 +3,8 @@ require 'field'
 describe Field do
   subject(:field) { described_class.new }
 
+  describe '#claimed?'
+
   it 'is has not been claimed when initialized' do
     expect(field).not_to be_claimed
   end

@@ -5,7 +5,7 @@ class Field
   end
 
   def claimed?
-    value
+    !!value
   end
 
   private

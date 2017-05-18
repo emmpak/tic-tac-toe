@@ -1,12 +1,12 @@
 require 'game'
 
 describe Game do
-  let(:field) { double(:field, claim: 'x')}
+  let(:field) { double(:field, claimed: true)}
   # let(:player1) { double(:player1, :play}
-  subject(:game) { described_class.new }
+  subject(:game) { described_class.new(Field) }
 
-  it 'initializes with 12 fields' do
-    expect(game.fields.length).to eq 12
+  it 'initializes with 3 rows' do
+    expect(game.fields.length).to eq 3
   end
 
   # describe '#play' do
