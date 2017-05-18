@@ -15,7 +15,7 @@ describe Game do
   end
 
   describe '#play' do
-    it 'populates a given field' do
+    it 'populates a given empty field' do
       allow(field).to receive(:empty?).and_return(true)
       expect(field).to receive(:claim).with('X')
       game.play(0,0,'X')
@@ -25,6 +25,12 @@ describe Game do
       allow(field).to receive(:empty?).and_return(false)
       expect(field).not_to receive(:claim).with('O')
       game.play(0,0, 'O')
+    end
+  end
+
+  describe '#finished?' do
+    it 'is not finished unless there is a win or all fields have been claimed' do
+      expect(game.finished?).to eq false
     end
   end
 
