@@ -14,5 +14,7 @@ class Game
       3.times { row << field_class.new }
       fields << row
     end
+    p fields.each.inject(:concat).length
+
   end
 end
