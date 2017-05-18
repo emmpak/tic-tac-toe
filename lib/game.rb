@@ -6,6 +6,10 @@ class Game
     create_fields(field_class)
   end
 
+  def play(row, column, player)
+    fields[row][column].claim(player)
+  end
+
   private
 
   def create_fields(field_class)
@@ -14,7 +18,5 @@ class Game
       3.times { row << field_class.new }
       fields << row
     end
-    p fields.each.inject(:concat).length
-
   end
 end

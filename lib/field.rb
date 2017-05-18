@@ -1,5 +1,6 @@
 class Field
-
+  attr_reader :value
+  
   def claim(mark)
     self.value = mark
   end
@@ -9,6 +10,6 @@ class Field
   end
 
   private
-  attr_accessor :value
+  attr_writer :value
 
 end
