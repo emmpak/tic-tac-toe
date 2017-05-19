@@ -17,8 +17,9 @@ describe Grid do
 
   describe '#claim'
 
-  it 'field is claimed if a player picks it' do
+  it 'one field is claimed if a player picks it' do
     grid.claim(0,0,'X')
     expect(grid.fields.first.first).not_to be_nil
+    expect(grid.fields.flatten.select{ |value| value == nil}.length).to eq 8
   end
 end
