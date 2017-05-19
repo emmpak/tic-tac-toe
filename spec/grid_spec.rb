@@ -87,5 +87,27 @@ describe Grid do
         expect(grid).not_to be_complete_column
       end
     end
+
+    context 'returns true if' do
+      it 'column has been claimed by X user' do
+        (0..2).each { |row| grid.claim(row,0, 'X') }
+        expect(grid).to be_complete_column
+      end
+
+      it 'column has been claimed by O user' do
+        (0..2).each { |row| grid.claim(row,0, 'O') }
+        expect(grid).to be_complete_column
+      end
+
+      it 'second column has been claimed by a user' do
+        (0..2).each { |row| grid.claim(row,1, 'X') }
+        expect(grid).to be_complete_column
+      end
+
+      it 'third column has been claimed by a user' do
+        (0..2).each { |column| grid.claim(row,2, 'X') }
+        expect(grid).to be_complete_column
+      end
+    end
   end
 end
