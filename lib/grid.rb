@@ -13,4 +13,8 @@ class Grid
   def complete_row?
     fields.map {|row| row.join }.any? {|row| row =~ /X{3}|O{3}/}
   end
+
+  def complete_column?
+    false
+  end
 end

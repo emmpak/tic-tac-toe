@@ -73,4 +73,19 @@ describe Grid do
       end
     end
   end
+
+  describe '#complete_column?' do
+    context 'returns false if' do
+      it 'columns are empty' do
+        expect(grid).not_to be_complete_column
+      end
+
+      it 'a column has not been claimed by one user' do
+        grid.claim(0,0,'X')
+        grid.claim(1,0,'X')
+        grid.claim(2,0,'O')
+        expect(grid).not_to be_complete_column
+      end
+    end
+  end
 end
