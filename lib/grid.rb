@@ -15,6 +15,7 @@ class Grid
   end
 
   def complete_column?
-    false
+    columns = fields.transpose
+    columns.map {|row| row.join }.any? {|row| row =~ /X{3}|O{3}/}
   end
 end

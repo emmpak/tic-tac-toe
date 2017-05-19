@@ -105,7 +105,7 @@ describe Grid do
       end
 
       it 'third column has been claimed by a user' do
-        (0..2).each { |column| grid.claim(row,2, 'X') }
+        (0..2).each { |row| grid.claim(row,2, 'X') }
         expect(grid).to be_complete_column
       end
     end
