@@ -11,7 +11,6 @@ class Grid
   end
 
   def complete_row?
-    fields.map {|row| row.join }.any? {|row| row =~ /X{3}/}
-    # fields.inject(:concat).map { |field| field.value }.each_slice(3).any? { |slice| slice.join == 'XXX' }
+    fields.map {|row| row.join }.any? {|row| row =~ /X{3}|O{3}/}
   end
 end
