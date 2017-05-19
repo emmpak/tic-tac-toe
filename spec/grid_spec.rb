@@ -61,6 +61,16 @@ describe Grid do
         (0..2).each { |column| grid.claim(0,column, 'O') }
         expect(grid).to be_complete_row
       end
+
+      it 'second row has been claimed by a user' do
+        (0..2).each { |column| grid.claim(1,column, 'X') }
+        expect(grid).to be_complete_row
+      end
+
+      it 'third row has been claimed by a user' do
+        (0..2).each { |column| grid.claim(2,column, 'X') }
+        expect(grid).to be_complete_row
+      end
     end
   end
 end
