@@ -3,6 +3,8 @@ require 'grid'
 describe Grid do
   subject(:grid) { described_class.new }
 
+  # before(:all) { grid.fields = Array.new(3) { Array.new(3, nil)}}
+
   it 'initalizes with 3 rows' do
     expect(grid.fields.length).to eq 3
   end
@@ -17,15 +19,20 @@ describe Grid do
 
   describe '#claim'
 
-  it 'one field is claimed if a player picks it' do
-    grid.claim(0,0,'X')
-    expect(grid.fields.first.first).not_to be_nil
-    expect(grid.fields.flatten.select{ |value| value == nil}.length).to eq 8
-  end
+    context 'a field is selected by a player' do
+      before(:each) { grid.claim(0,0,'X') }
 
-  it 'a claimed field cannot be picked' do
-    grid.claim(0,0,'X')
-    grid.claim(0,0,'O')
-    expect(grid.fields.first.first).to eq 'X'
-  end
+      it 'is claimed on the grid' do
+        expect(grid.fields.first.first).not_to be_nil
+      end
+
+      it 'grid has 8 empty value left' do
+        expect(grid.fields.flatten.select{ |value| value == nil}.length).to eq 8
+      end
+
+      it 'it cannot be picked by another user' do
+        grid.claim(0,0,'O')
+        expect(grid.fields.first.first).to eq 'X'
+      end
+    end
 end
