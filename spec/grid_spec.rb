@@ -110,4 +110,45 @@ describe Grid do
       end
     end
   end
+
+  describe '#complete_diagonal?' do
+    context 'returns false if' do
+      it 'diagonals are empty' do
+        expect(grid).not_to be_complete_diagonal
+      end
+
+      it 'a left-right dioganal has not been claimed by one user' do
+        grid.claim(0,0,'X')
+        grid.claim(1,1,'X')
+        grid.claim(2,2,'O')
+        expect(grid).not_to be_complete_diagonal
+      end
+
+      it 'a right-left diagonal has not been claimed by one user' do
+        grid.claim(0,2,'X')
+        grid.claim(1,1,'X')
+        grid.claim(2,0,'O')
+        expect(grid).not_to be_complete_diagonal
+      end
+    end
+
+    context 'returns true if' do
+      it 'left-right diagonal has been claimed by X user' do
+        (0..2).each { |position| grid.claim(position,position, 'X') }
+        expect(grid).to be_complete_diagonal
+      end
+
+      it 'left-right diagonal has been claimed by O user' do
+        (0..2).each { |position| grid.claim(position,position, 'O') }
+        expect(grid).to be_complete_diagonal
+      end
+
+      it 'right-left diagonal has been claimed by a user' do
+        grid.claim(0,2,'X')
+        grid.claim(1,1,'X')
+        grid.claim(2,0,'X')
+        expect(grid).to be_complete_diagonal
+      end
+    end
+  end
 end

@@ -16,6 +16,11 @@ class Grid
 
   def complete_column?
     columns = fields.transpose
+    p columns
     columns.map {|row| row.join }.any? {|row| row =~ /X{3}|O{3}/}
+  end
+
+  def complete_diagonal?
+
   end
 end
