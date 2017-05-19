@@ -17,7 +17,7 @@ describe Grid do
     expect(grid.fields.flatten.select{ |value| value == nil}.length).to eq 9
   end
 
-  describe '#claim'
+  describe '#claim' do
 
     context 'a field is selected by a player' do
       before(:each) { grid.claim(0,0,'X') }
@@ -35,4 +35,32 @@ describe Grid do
         expect(grid.fields.first.first).to eq 'X'
       end
     end
+  end
+
+  describe 'complete_row?' do
+    context 'returns false if' do
+      it 'rows are empty' do
+        expect(grid).not_to be_complete_row
+      end
+
+      it 'a row has not been claimed by one user' do
+        grid.claim(0,0,'X')
+        grid.claim(0,1,'X')
+        grid.claim(0,2,'O')
+        expect(grid).not_to be_complete_row
+      end
+    end
+
+    context 'returns true if' do
+      it 'row has been claimed by X user' do
+        (0..2).each { |column| grid.claim(0,column, 'X') }
+        expect(grid).to be_complete_row
+      end
+
+      it 'row has been claimed by O user' do
+        (0..2).each { |column| grid.claim(0,column, 'O') }
+        expect(grid).to be_complete_row
+      end
+    end
+  end
 end

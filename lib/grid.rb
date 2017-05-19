@@ -9,4 +9,9 @@ class Grid
   def claim(row, column, player)
     fields[row][column] = player if fields[row][column].nil?
   end
+
+  def complete_row?
+    fields.map {|row| row.join }.any? {|row| row =~ /X{3}/}
+    # fields.inject(:concat).map { |field| field.value }.each_slice(3).any? { |slice| slice.join == 'XXX' }
+  end
 end
