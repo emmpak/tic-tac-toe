@@ -22,4 +22,10 @@ describe Grid do
     expect(grid.fields.first.first).not_to be_nil
     expect(grid.fields.flatten.select{ |value| value == nil}.length).to eq 8
   end
+
+  it 'a claimed field cannot be picked' do
+    grid.claim(0,0,'X')
+    grid.claim(0,0,'O')
+    expect(grid.fields.first.first).to eq 'X'
+  end
 end
