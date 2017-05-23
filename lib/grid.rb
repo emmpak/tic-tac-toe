@@ -16,11 +16,11 @@ class Grid
 
   def complete_column?
     columns = fields.transpose
-    p columns
     columns.map {|row| row.join }.any? {|row| row =~ /X{3}|O{3}/}
   end
 
   def complete_diagonal?
-
+    p fields.each_with_index.chunk { |x, i| i.join =~ /X{3}/}
+    # require 'pry';binding.pry
   end
 end

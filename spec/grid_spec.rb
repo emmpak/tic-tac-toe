@@ -3,8 +3,6 @@ require 'grid'
 describe Grid do
   subject(:grid) { described_class.new }
 
-  # before(:all) { grid.fields = Array.new(3) { Array.new(3, nil)}}
-
   it 'initalizes with 3 rows' do
     expect(grid.fields.length).to eq 3
   end
